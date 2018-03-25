@@ -17,7 +17,9 @@ var data2006 = [
 ];
 var container = d3.select("#container");
 var chart = d3.select("#chart");
-var axisLabelEnter = container.selectAll(".label").data(data2016).enter();
+var axisLabelEnter = container.selectAll(".xlabel").data(data2016).enter();
 
 /* CREATE AXIS LABELS */
-axisLabelEnter.append("span").classed("label", true).style("bottom", 0).text(function(d) {return d.name;});
+d3.select("#yaxis").selectAll(".ylabel").data([600, 500, 400, 300, 200, 100, 0]).enter()
+    .append("span").classed("ylabel", true).style("bottom", function(d) {return d + 'px';}).text(function(d) {return d;});
+axisLabelEnter.append("span").classed("xlabel", true).style("bottom", 0).text(function(d) {return d.name;});
