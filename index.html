@@ -6,17 +6,22 @@
       #container {
         border: 1px solid black;
         margin-bottom: 20px;
+        background-color: #eee;
       }
       #chart {
         display: inline-block;
         border: 1px solid black;
         height: 600px;
         width: 750px;
+        background-color: white;
       }
       #yaxis {
         display: inline-block;
         width: 100px;
         height: 600px;
+      }
+      #xaxis {
+        padding-left: 100px;
       }
       .xlabel {
         display: inline-block;
@@ -26,16 +31,19 @@
       .ylabel {
         display: block;
         height: 100px;
+        text-align: right;
       }
     </style>
   </head>
   <body>
     <h1>Discretionary Spending</h1>
+    <h3>Fiscal Year 2016</h3>
     <p>The y axis has units of billions of dollars.</p>
     <div id ="container">
       <div id="yaxis"></div>
       <div id="chart"></div>
       <br>
+      <div id="xaxis"></div>
     </div>
     <button id="fy2006">View data for 2006</button>
     <button id="fy2016">View data for 2016</button>
