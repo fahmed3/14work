@@ -15,10 +15,16 @@ var data2016 = [
 var data2006 = [
     {name: "National Defense", amount: 552, percent: 51},
     {name: "Education", amount: 85.6, percent: 8},
-    {name: "", amount: , percent: },
-    {name: "", amount: , percent: },
-    {name: "", amount: , percent: },
-    {name: "", amount: , percent: },
+    {name: "Transportation", amount: 73, percent: 7},
+    {name: "Social Security, Unemployment, and Labor", amount: 62.6, percent: 6},
+    {name: "Medicare and Health", amount: 59.8, percent: 6},
+    {name: "Government", amount: 59.8, percent: 6},
+    {name: "Housing and Community", amount: 42.6, percent: 4},
+    {name: "Energy and Environment", amount: 39.8, percent: 4},
+    {name: "International Affairs", amount: 38, percent: 4},
+    {name: "Veterans' Benefits", amount: 34.4, percent: 3},
+    {name: "Science, Space and Tech", amount: 24.9, percent: 2},
+    {name: "Agriculture", amount: 6.32, percent: 1}
 ];
 
 /* D3 VARIABLES */
@@ -48,4 +54,3 @@ for(var i = 0; i < categoryLabelsDom.length; i++) {
         this.style.opacity = 0;
     });
 }*/
-
