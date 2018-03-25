@@ -5,24 +5,37 @@
     <style>
       #container {
         border: 1px solid black;
-        width: 900px;
-        height: 600px;
+        margin-bottom: 20px;
       }
       #chart {
+        display: inline-block;
         border: 1px solid black;
-        margin-left: 50px;
-        margin-bottom: 50px;
+        height: 600px;
+        width: 750px;
       }
-      .label {
-        position: absolute;
+      #yaxis {
+        display: inline-block;
+        width: 100px;
+        height: 600px;
+      }
+      .xlabel {
+        display: inline-block;
         z-index: 5;
+        width: 80px;
+      }
+      .ylabel {
+        display: block;
+        height: 100px;
       }
     </style>
   </head>
   <body>
     <h1>Discretionary Spending</h1>
+    <p>The y axis has units of billions of dollars.</p>
     <div id ="container">
+      <div id="yaxis"></div>
       <div id="chart"></div>
+      <br>
     </div>
     <button id="fy2006">View data for 2006</button>
     <button id="fy2016">View data for 2016</button>
