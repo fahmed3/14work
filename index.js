@@ -35,11 +35,25 @@ var chart = d3.select("#chart");
 //these are the individual bars
 var bars = chart.selectAll(".bar").data(data2016).enter();
 
+
 /* CREATE Y AXIS LABELS */
 d3.select("#yaxis").selectAll(".ylabel")
     .data([600, 500, 400, 300, 200, 100, 0]).enter() //the scale on y axis is 100
     .append("span").classed("ylabel", true) //this class gives them their spacing
     .text(function(d) {return "$" + d + " billion";}); //this is the display value
+
+//This event makes the tooltip text of a bar appear below the chart
+var barHoverEvent = function() {
+    var text = this.getAttribute("title");
+    d3.select("#xaxis").text(text);
+}
+
+/* MAKE BARS */
+bars.append("div").classed("bar", true) //gives them the bar class to make them blue and aligned
+    .attr("title", function(d) { //the title attribute gives the element a tooltip when you hover
+        return d.name + " -- $" + d.amount + " billion -- " + d.percent + "%";
+    });
+
 /* CREATE X AXIS LABELS 
 d3.select("#xaxis").selectAll(".xlabel").data(data2016).enter().append("span").classed("xlabel", true)
     .style("opacity", 0) //make them hidden by default
