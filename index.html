@@ -2,16 +2,33 @@
 <html>
   <head>
     <title>Budget</title>
+    <style>
+      #container {
+        border: 1px solid black;
+        width: 900px;
+        height: 600px;
+      }
+      #chart {
+        border: 1px solid black;
+        margin-left: 50px;
+        margin-bottom: 50px;
+      }
+      .label {
+        position: absolute;
+        z-index: 5;
+      }
+    </style>
   </head>
   <body>
-    <style>
-      svg {border: 1px solid black }
-    </style>
-    
-    <svg xmlns="http://www.w3.org/2000svg" width="900" height="550" id="svg">
-      <div class ="chart">
-
-      </div>
-    </svg>
+    <h1>Discretionary Spending</h1>
+    <div id ="container">
+      <div id="chart"></div>
+    </div>
+    <button id="fy2006">View data for 2006</button>
+    <button id="fy2016">View data for 2016</button>
+    <br><br><br>
+    <a href="http://federal-budget.insidegov.com">Click here to view the source of our data</a>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
