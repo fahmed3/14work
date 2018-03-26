@@ -33,7 +33,7 @@ var container = d3.select("#container");
 //this div has all the bars inside of it
 var chart = d3.select("#chart");
 //these are the individual bars
-var bars = chart.selectAll(".bar").data(data2016).enter();
+var bars = chart.selectAll(".bar").data(data2016).enter().append("div");
 
 
 /* CREATE Y AXIS LABELS */
@@ -45,14 +45,48 @@ d3.select("#yaxis").selectAll(".ylabel")
 //This event makes the tooltip text of a bar appear below the chart
 var barHoverEvent = function() {
     var text = this.getAttribute("title");
-    d3.select("#xaxis").text(text);
-}
+    d3.select("#xaxis").text("Category: " + text);
+};
 
-/* MAKE BARS */
-bars.append("div").classed("bar", true) //gives them the bar class to make them blue and aligned
-    .attr("title", function(d) { //the title attribute gives the element a tooltip when you hover
-        return d.name + " -- $" + d.amount + " billion -- " + d.percent + "%";
-    });
+
+/* TRANSITION */
+var buttons = document.getElementsByTagName("button");
+buttons[0].addEventListener("click", function(evt) {
+    console.log("throwback");
+    changeYear(data2006, "2006");
+});
+buttons[1].addEventListener("click", function(evt) {
+    console.log("wooo");
+    changeYear(data2016, "2016");
+});
+
+//This function does the transition effect
+var changeYear = function(dataArray, year) {
+    //make bars
+    bars.classed("bar", true) //gives them the bar class to make them blue and aligned
+        .attr("title", function(d, i) { //the title attribute gives the element a tooltip when you hover
+            return dataArray[i].name + " -- $" + dataArray[i].amount + " billion -- " + dataArray[i].percent + "%";
+        })
+        .transition().duration(1000)
+        .style("height", function(d, i) { //set the height of the bar
+            return dataArray[i].amount + "px";
+        })
+        .style("margin-top", function(d, i) { //this is necessary for some reason
+            return (600 - dataArray[i].amount) + "px";
+        });
+    //Fill the x axis with the category name
+    var domBars = document.getElementsByClassName("bar");
+    for(var i = 0; i < domBars.length; i++) {
+        domBars[i].addEventListener("mouseenter", barHoverEvent);
+    }
+    d3.select("#xaxis").text("Hover over a bar to see the name of the category it represents.");
+    d3.select("#title").text("Fiscal Year " + year);
+};
+
+changeYear(data2006, "2006");
+
+
+
 
 /* CREATE X AXIS LABELS 
 d3.select("#xaxis").selectAll(".xlabel").data(data2016).enter().append("span").classed("xlabel", true)
